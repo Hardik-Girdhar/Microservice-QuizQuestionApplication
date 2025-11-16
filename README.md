@@ -84,3 +84,30 @@ Stores:
 - Distributed data storage
 - Clean service separation
 - Gateway-level routing
+
+                         ┌───────────────────────────┐
+                       │      Client / Frontend     │
+                       │ (Postman / React / Angular)│
+                       └───────────────┬───────────┘
+                                       │
+                                       ▼
+                         ┌────────────────────────┐
+                         │      API GATEWAY       │
+                         │     (Port: 2525)       │
+                         └─────────────┬──────────┘
+                                       │  Routes
+     ┌─────────────────────────────────┼─────────────────────────────────┐
+     │                                 │                                 │
+     ▼                                 ▼                                 ▼
+┌──────────────┐            ┌────────────────┐                ┌─────────────────────┐
+│ QUIZ-SERVICE │◄──────────►│ SERVICE REGISTRY│◄──────────────►│ QUESTION-SERVICE   │
+│  (Port:8090) │  Eureka     │   (Eureka 8761) │   Eureka       │   (Port:8081/8080) │
+│  PostgreSQL  │  Client     │   Discovery     │   Client       │   PostgreSQL       │
+│   quizdb     │             └────────────────┘                │    questiondb       │
+└──────────────┘                                                └─────────────────────┘
+      │                                                                 ▲
+      │                                                                 │
+      │   OpenFeign (REST)                                              │
+      └─────────────────────────────────────────────────────────────────┘
+
+
