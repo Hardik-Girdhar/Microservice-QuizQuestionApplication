@@ -45,6 +45,16 @@ Stores:
   - Stores:
     - Quiz (id, title, list of questionIds)
 
+## 🔗 Monolithic Version Available  
+A complete monolithic version of this project is also created separately.
+
+**👉 Monolithic Repo:**  
+
+https://github.com/Hardik-Girdhar/Monolithic-QuizQuestionApplication.git
+
+You can explore that repo to see how all quiz and question features are implemented in a single Spring Boot application without microservices.
+
+
 ## 🔌 Tech Stack
 - Java 17
 - Spring Boot 3
