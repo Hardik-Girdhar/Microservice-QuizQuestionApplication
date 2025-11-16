@@ -18,34 +18,23 @@ Handles everything related to questions:
     - Return questions by list of IDs
     - Calculate score based on submitted answers
 
-3️⃣ Quiz-Service
-
+### 3️⃣ Quiz-Service
 Responsible for quiz creation and scoring:
+  - Communicates with Question-Service via OpenFeign
+  - Stores quizzes in PostgreSQL (quizdb)
+  - APIs:
+    - Create a quiz (category, numQ, title)
+    - Fetch quiz questions
+    - Submit quiz answers and return score
 
-Communicates with Question-Service via OpenFeign
+### 4️⃣ API-Gateway
+- Single entry point for all clients
+- Routes requests to microservices
+- Uses Eureka discovery for load balancing
+- Runs on port 2525
 
-Stores quizzes in PostgreSQL (quizdb)
-
-APIs:
-
-Create a quiz (category, numQ, title)
-
-Fetch quiz questions
-
-Submit quiz answers and return score
-
-4️⃣ API-Gateway
-
-Single entry point for all clients
-
-Routes requests to microservices
-
-Uses Eureka discovery for load balancing
-
-Runs on port 2525
-
-🔗 Communication Flow
-Client → API-Gateway → Quiz-Service → Question-Service → PostgreSQL DBs
+## 🔗 Communication Flow
+| Client → API-Gateway → Quiz-Service → Question-Service → PostgreSQL DBs |
 
 🗄️ Databases
 🟦 questiondb
