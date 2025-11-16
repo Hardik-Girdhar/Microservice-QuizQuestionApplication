@@ -36,75 +36,51 @@ Responsible for quiz creation and scoring:
 ## 🔗 Communication Flow
 | Client → API-Gateway → Quiz-Service → Question-Service → PostgreSQL DBs |
 
-🗄️ Databases
-🟦 questiondb
-
+## 🗄️ Databases
+### 🟦 questiondb
 Stores:
+  - Question (id, title, options, right answer, category)
 
-Question (id, title, options, right answer, category)
+### 🟪 quizdb
+  - Stores:
+    - Quiz (id, title, list of questionIds)
 
-🟪 quizdb
+## 🔌 Tech Stack
+- Java 17
+- Spring Boot 3
+- Spring Cloud 2025
+- OpenFeign
+- Netflix Eureka
+- Spring Data JPA
+- PostgreSQL
+- API-Gateway (Spring Cloud Gateway)
 
-Stores:
+## ▶️ How to Run
+- Start Eureka Server
+- Start Question-Service
+- Start Quiz-Service
+- Start API-Gateway
+- Access Gateway endpoints via:
+- http://localhost:2525/
 
-Quiz (id, title, list of questionIds)
+## 📡 Main Endpoints
+### 🔸 Question-Service
+- GET  /question/generate?category=Python&numQ=5
+- POST /question/getQuestions
+- POST /question/getScore
 
-🔌 Tech Stack
+### 🔸 Quiz-Service
+- POST /quiz/createQuiz
+- GET  /quiz/getQuizById/{id}
+- POST /quiz/submit/{id}
 
-Java 17
+### 🔸 Eureka Dashboard
+- http://localhost:8761
 
-Spring Boot 3
-
-Spring Cloud 2025
-
-OpenFeign
-
-Netflix Eureka
-
-Spring Data JPA
-
-PostgreSQL
-
-API-Gateway (Spring Cloud Gateway)
-
-▶️ How to Run
-
-Start Eureka Server
-
-Start Question-Service
-
-Start Quiz-Service
-
-Start API-Gateway
-
-Access Gateway endpoints via:
-
-http://localhost:2525/
-
-📡 Main Endpoints
-🔸 Question-Service
-GET  /question/generate?category=Python&numQ=5
-POST /question/getQuestions
-POST /question/getScore
-
-🔸 Quiz-Service
-POST /quiz/createQuiz
-GET  /quiz/getQuizById/{id}
-POST /quiz/submit/{id}
-
-🔸 Eureka Dashboard
-http://localhost:8761
-
-⭐ Features
-
-Complete microservices architecture
-
-Inter-service communication via OpenFeign
-
-Automatic service registration/discovery
-
-Distributed data storage
-
-Clean service separation
-
-Gateway-level routing
+## ⭐ Features
+- Complete microservices architecture
+- Inter-service communication via OpenFeign
+- Automatic service registration/discovery
+- Distributed data storage
+- Clean service separation
+- Gateway-level routing
