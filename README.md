@@ -10,19 +10,13 @@ It demonstrates how distributed services communicate to generate quizzes, fetch 
 - Provides service discovery.
 - Runs on port 8761.
 
-2️⃣ Question-Service
-
+### 2️⃣ Question-Service
 Handles everything related to questions:
-
-Stores questions in PostgreSQL (questiondb)
-
-APIs:
-
-Generate random question IDs by category
-
-Return questions by list of IDs
-
-Calculate score based on submitted answers
+  - Stores questions in PostgreSQL (questiondb)
+  - APIs:
+    - Generate random question IDs by category
+    - Return questions by list of IDs
+    - Calculate score based on submitted answers
 
 3️⃣ Quiz-Service
 
